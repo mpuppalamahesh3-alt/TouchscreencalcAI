@@ -1,6 +1,17 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Pencil, Camera, Mic, Sparkles, BookOpen, Notebook, Calculator as CalcIcon, Square } from "lucide-react";
+import {
+  Pencil,
+  Camera,
+  Mic,
+  Sparkles,
+  BookOpen,
+  Notebook,
+  Calculator as CalcIcon,
+  DollarSign,
+  LineChart,
+  Square,
+} from "lucide-react";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import AnswerSection from "@/components/AnswerSection";
 import HandwritingPreview from "@/components/HandwritingPreview";
@@ -9,6 +20,8 @@ import VoiceInput from "@/components/VoiceInput";
 import FormulaLibrary from "@/components/FormulaLibrary";
 import NotebookSaver, { type SavedNote } from "@/components/NotebookSaver";
 import Calculator from "@/components/Calculator";
+import CurrencyConverter from "@/components/CurrencyConverter";
+import GraphCalculator from "@/components/GraphCalculator";
 import FloatingChat from "@/components/FloatingChat";
 import { exportCanvasForRecognition } from "@/lib/handwriting";
 import { invokeSolveMath } from "@/lib/solveMath";
@@ -16,7 +29,7 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedLogo from "@/components/AnimatedLogo";
 
 type InputMode = "draw" | "camera" | "voice";
-type Section = "solve" | "calculator" | "formulas" | "notes";
+type Section = "solve" | "calculator" | "currency" | "graphs" | "formulas" | "notes";
 
 const tabs: { id: InputMode; label: string; icon: React.ReactNode }[] = [
   { id: "draw", label: "Draw", icon: <Pencil size={18} /> },
@@ -27,9 +40,13 @@ const tabs: { id: InputMode; label: string; icon: React.ReactNode }[] = [
 const sections: { id: Section; label: string; icon: React.ReactNode }[] = [
   { id: "solve", label: "Solve", icon: <Sparkles size={16} /> },
   { id: "calculator", label: "Calc", icon: <CalcIcon size={16} /> },
+  { id: "currency", label: "Currency", icon: <DollarSign size={16} /> },
+  { id: "graphs", label: "Graphs", icon: <LineChart size={16} /> },
   { id: "formulas", label: "Formulas", icon: <BookOpen size={16} /> },
   { id: "notes", label: "Notes", icon: <Notebook size={16} /> },
 ];
+
+
 
 const HANDWRITING_IDLE_MS = 900;
 const HANDWRITING_COOLDOWN_MS = 3500;
@@ -562,7 +579,30 @@ const Index = () => {
               </Suspense>
             </motion.div>
           )}
-
+          {section === "currency" && (
+  <motion.div
+    key="currency"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <Suspense fallback={panelFallback}>
+      <CurrencyConverter />
+    </Suspense>
+  </motion.div>
+)}
+{section === "graphs" && (
+  <motion.div
+    key="graphs"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <Suspense fallback={panelFallback}>
+      <GraphCalculator />
+    </Suspense>
+  </motion.div>
+)}
           {section === "formulas" && (
             <motion.div key="formulas" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <Suspense fallback={panelFallback}>
