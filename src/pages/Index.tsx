@@ -321,13 +321,13 @@ const Index = () => {
 
       persistNotes((prev) => [
         {
-          id: crypto.randomUUID(),
+           id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
           expression: solvedExpression,
           result: solvedResult,
           steps: solvedSteps,
           timestamp: Date.now(),
         },
-        ...prev,
+        ...prev, 
       ].slice(0, 50));
     } catch (error: any) {
       console.error("Solve error:", error);
