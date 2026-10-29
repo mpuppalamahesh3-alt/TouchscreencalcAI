@@ -102,7 +102,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       messages = [
         {
           role: "system",
-          content: `You are Smart Calc, an accurate math, science and engineering solver.
+          content: `You are Smart Screen Calc, an accurate math, science and engineering solver.
 
 Rules:
 1. Simple arithmetic: return only the final answer in result and steps=[].

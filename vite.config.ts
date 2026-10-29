@@ -21,8 +21,8 @@ export default defineConfig(({ mode }) => ({
       devOptions: { enabled: false },
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
-        name: "InkCalc — AI Math Studio",
-        short_name: "InkCalc",
+        name: "Smart Screen Calc — AI Math Studio",
+        short_name: "Smart Screen Calc",
         description: "Offline-capable math solver with handwriting, camera and voice input.",
         theme_color: "#1e40af",
         background_color: "#0b1220",

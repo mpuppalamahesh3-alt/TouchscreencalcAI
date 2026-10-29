@@ -83,7 +83,11 @@ const Index = () => {
   const lastAutoQuestionRef = useRef("");
   const [savedNotes, setSavedNotes] = useState<SavedNote[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("inkCalcNotes") || "[]");
+      return JSON.parse(
+        localStorage.getItem("smartScreenCalcNotes") ||
+        localStorage.getItem("inkCalcNotes") ||
+        "[]"
+      );
     } catch {
       return [];
     }
@@ -140,7 +144,7 @@ const Index = () => {
   const persistNotes = useCallback((updater: SavedNote[] | ((p: SavedNote[]) => SavedNote[])) => {
     setSavedNotes((prev) => {
       const next = typeof updater === "function" ? updater(prev) : updater;
-      localStorage.setItem("inkCalcNotes", JSON.stringify(next));
+      localStorage.setItem("smartScreenCalcNotes", JSON.stringify(next));
       return next;
     });
   }, []);
@@ -399,7 +403,7 @@ const Index = () => {
             />
             <div className="leading-none flex flex-col items-start">
               <h1 className="font-display text-2xl sm:text-[26px] leading-none font-black tracking-tight">
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Ink</span>
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Smart Screen</span>{" "}
                 <span className="text-foreground">Calc</span>
               </h1>
               <span

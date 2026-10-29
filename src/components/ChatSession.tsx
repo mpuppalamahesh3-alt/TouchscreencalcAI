@@ -18,11 +18,16 @@ export interface ChatThread {
   createdAt: number;
 }
 
-const STORAGE_KEY = "inkCalcChats";
+const STORAGE_KEY = "smartScreenCalcChats";
+const LEGACY_STORAGE_KEY = "inkCalcChats";
 
 const loadChats = (): ChatThread[] => {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return JSON.parse(
+      localStorage.getItem(STORAGE_KEY) ||
+      localStorage.getItem(LEGACY_STORAGE_KEY) ||
+      "[]"
+    );
   } catch {
     return [];
   }

@@ -1,4 +1,4 @@
-# Touch Math Studio
+# Smart Screen Calc
 
 I need to professional website of calculator 
 

@@ -6,7 +6,7 @@ interface AnimatedLogoProps {
 }
 
 /**
- * Animated InkCalc logo — a glowing calculator with an orbiting spark,
+ * Animated Smart Screen Calc logo — a glowing calculator with an orbiting spark,
  * animated ink stroke underlining "∑", and subtle breathing halo.
  * Pure SVG + framer-motion, no network needed.
  */
@@ -22,7 +22,7 @@ const AnimatedLogo = ({ size = 56, className = "" }: AnimatedLogoProps) => {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       role="img"
-      aria-label="InkCalc animated logo"
+      aria-label="Smart Screen Calc animated logo"
     >
       <defs>
         <linearGradient id="ic-body" x1="0" y1="0" x2="1" y2="1">

@@ -128,7 +128,7 @@ export const exportHandwritingPdf = async (input: HandwritingPdfInput) => {
   // Title
   page.ctx.font = font(38, true);
   page.ctx.fillStyle = PENCIL;
-  page.ctx.fillText("InkCalc — Solution", LEFT, y);
+  page.ctx.fillText("Smart Screen Calc — Solution", LEFT, y);
   nextLine();
 
   draw(`Question: ${input.question || "—"}`, 34, PENCIL);
@@ -189,5 +189,5 @@ export const exportHandwritingPdf = async (input: HandwritingPdfInput) => {
     if (i > 0) pdf.addPage();
     pdf.addImage(c, "JPEG", 0, 0, pw, ph, undefined, "FAST");
   });
-  pdf.save(`inkcalc-solution-${new Date().toISOString().slice(0, 10)}.pdf`);
+  pdf.save(`smart-screen-calc-solution-${new Date().toISOString().slice(0, 10)}.pdf`);
 };
